@@ -28,33 +28,41 @@ public struct HomeView: View {
     public var body: some View {
         NavigationStack {
             GeometryReader { proxy in
-                let layout = HomeLayout(for: proxy.size.height)
+                let layout = HomeLayout(for: proxy.size)
 
-                ScrollView(.vertical, showsIndicators: false) {
+                ZStack {
+                    PipBackdrop(colorScheme: colorScheme)
+
                     VStack(spacing: 0) {
                         header
-                            .frame(maxWidth: 430)
-                            .frame(minHeight: layout.headerHeight)
-                            .padding(.horizontal, 24)
+                            .padding(.horizontal, 20)
+                            .frame(height: layout.headerHeight)
 
-                        VStack(spacing: layout.spacing) {
-                            todayCount
-                            pipStage(size: layout.pipSize)
-                            statusText
-                            controls
-                        }
-                        .frame(maxWidth: 430)
-                        .padding(.horizontal, 24)
-                        .frame(maxWidth: .infinity)
-                        .frame(
-                            minHeight: max(0, proxy.size.height - layout.headerHeight),
-                            alignment: .center
-                        )
+                        characterStage(size: layout.pipSize)
+                            .frame(height: layout.stageHeight)
+                            .frame(maxWidth: .infinity)
+
+                        statusBlock
+                            .padding(.horizontal, 24)
+                            .padding(.top, 2)
+
+                        chipRow
+                            .padding(.horizontal, 24)
+                            .padding(.top, 10)
+
+                        Spacer(minLength: 8)
+
+                        controls
+                            .padding(.horizontal, 24)
+                            .padding(.top, 8)
+                            .padding(.bottom, 10)
                     }
+                    .frame(maxWidth: 430)
                     .frame(maxWidth: .infinity)
                 }
-                .background(PipTheme.background(for: colorScheme).ignoresSafeArea())
             }
+            .tint(PipTheme.mintDeep)
+            .toolbar(.hidden, for: .navigationBar)
             .navigationDestination(isPresented: $isCalendarPresented) {
                 CalendarView()
             }
@@ -94,124 +102,165 @@ public struct HomeView: View {
     }
 
     private var header: some View {
-        HStack {
+        HStack(spacing: 10) {
             Text("Pip")
-                .font(.largeTitle.weight(.bold))
+                .font(.title2.weight(.bold))
+                .foregroundStyle(PipTheme.ink(for: colorScheme))
 
             Spacer()
 
-            Button {
+            PipHeaderButton(systemName: "calendar") {
                 viewModel.pauseForLeaving()
                 isCalendarPresented = true
-            } label: {
-                Image(systemName: "calendar")
-                    .font(.title3.weight(.semibold))
             }
             .accessibilityLabel("Calendar")
             .accessibilityHint("Opens the calendar page.")
 
-            Button {
+            PipHeaderButton(systemName: "gearshape") {
                 viewModel.pauseForLeaving()
                 isSettingsPresented = true
-            } label: {
-                Image(systemName: "gearshape")
-                    .font(.title3.weight(.semibold))
             }
             .accessibilityLabel("Settings")
             .accessibilityHint("Opens settings in a sheet.")
         }
-        .foregroundStyle(PipTheme.ink(for: colorScheme))
     }
 
-    private var todayCount: some View {
-        VStack(spacing: 4) {
-            Text("TODAY")
-                .font(.caption.weight(.bold))
-                .tracking(1.4)
-                .foregroundStyle(.secondary)
+    private func characterStage(size: CGFloat) -> some View {
+        let ringSize = size + 36
 
-            Text("\(viewModel.todayCompletedCount)")
-                .font(.system(size: 56, weight: .bold, design: .rounded))
-                .contentTransition(.numericText())
-
-            Text("completed sessions")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-        }
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("Today \(viewModel.todayCompletedCount) completed sessions")
-    }
-
-    private func pipStage(size: CGFloat) -> some View {
-        PipFrameView(
-            stage: viewModel.stage,
-            frameIndex: viewModel.frameIndex(reduceMotion: reduceMotion),
-            reduceMotion: reduceMotion
-        )
-        .frame(width: size, height: size)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(viewModel.voiceOverLabel)
-        .accessibilityHint(viewModel.voiceOverHint)
-    }
-
-    private var statusText: some View {
-        VStack(spacing: 8) {
-            Text(viewModel.stage.accessibilityTitle)
-                .font(.title2.weight(.semibold))
+        return ZStack {
+            Circle()
+                .fill(PipTheme.mint.opacity(colorScheme == .dark ? 0.10 : 0.16))
+                .frame(width: ringSize + 28, height: ringSize + 28)
+                .blur(radius: 18)
 
             if viewModel.state == .session {
-                Text("\(viewModel.remainingSeconds) seconds remaining")
-                    .font(.body.monospacedDigit())
-                    .foregroundStyle(.secondary)
-            } else if viewModel.state == .done {
-                Text("Nice work")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-            } else {
-                Text("Ready when you are")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
+                PipSessionRing(
+                    progress: sessionProgress,
+                    isLift: viewModel.stage == .lift
+                )
+                .frame(width: ringSize, height: ringSize)
             }
+
+            PipCharacterView(
+                stage: viewModel.stage,
+                homeState: viewModel.state,
+                isPaused: viewModel.isPaused,
+                reduceMotion: reduceMotion,
+                phaseStartedAt: viewModel.phaseStartedAt,
+                phaseDuration: viewModel.phaseDuration,
+                elapsedSecondsInPhase: viewModel.elapsedSecondsInPhase,
+                size: size
+            )
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(viewModel.voiceOverLabel)
+            .accessibilityHint(viewModel.voiceOverHint)
+
+            if viewModel.state == .session {
+                VStack {
+                    PipEffortBubble(
+                        title: viewModel.isPaused ? "Paused" : viewModel.stage.effortTitle,
+                        subtitle: viewModel.isPaused
+                            ? "\(viewModel.remainingSeconds) seconds left"
+                            : viewModel.stage.effortSubtitle,
+                        isLift: viewModel.stage == .lift && !viewModel.isPaused
+                    )
+                    Spacer()
+                }
+                .offset(y: -12)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var sessionProgress: Double {
+        let total = Double(max(viewModel.totalSessionSeconds, 1))
+        return 1 - (Double(viewModel.remainingSeconds) / total)
+    }
+
+    private var statusBlock: some View {
+        VStack(spacing: 6) {
+            Text(statusTitle)
+                .font(.title3.weight(.semibold))
+                .foregroundStyle(PipTheme.ink(for: colorScheme))
+
+            Text(statusSubtitle)
+                .font(.body)
+                .foregroundStyle(PipTheme.mutedInk(for: colorScheme))
+                .multilineTextAlignment(.center)
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(viewModel.voiceOverLabel)
+    }
+
+    private var statusTitle: String {
+        if viewModel.state == .session {
+            return viewModel.isPaused ? "Paused" : viewModel.stage.accessibilityTitle
+        }
+        if viewModel.state == .done {
+            return "Nice work"
+        }
+        return "Ready when you are"
+    }
+
+    private var statusSubtitle: String {
+        if viewModel.state == .session {
+            if viewModel.currentRepetition > 0 {
+                return "Round \(viewModel.currentRepetition) of 8 · \(viewModel.remainingSeconds)s left"
+            }
+            return "\(viewModel.remainingSeconds) seconds remaining"
+        }
+        if viewModel.state == .done {
+            return "Added to today's count"
+        }
+        return "A 48-second guided kegel"
+    }
+
+    private var chipRow: some View {
+        HStack(spacing: 10) {
+            PipChip(title: "Today", value: "\(viewModel.todayCompletedCount)")
+            if viewModel.state == .session {
+                PipChip(title: "Round", value: "\(max(viewModel.currentRepetition, 1))/8")
+                PipChip(title: "Left", value: "\(viewModel.remainingSeconds)s")
+            } else {
+                PipChip(title: "Session", value: "48s")
+            }
+        }
+        .frame(maxWidth: .infinity)
     }
 
     private var controls: some View {
-        VStack(spacing: 12) {
+        Group {
             if viewModel.state == .session {
                 HStack(spacing: 12) {
-                    Button {
+                    PipSecondaryButton(
+                        title: viewModel.isPaused ? "Resume" : "Pause",
+                        systemImage: viewModel.isPaused ? "play.fill" : "pause.fill"
+                    ) {
                         if viewModel.isPaused {
                             viewModel.resumeSession()
                         } else {
                             viewModel.pauseSession()
                         }
-                    } label: {
-                        Label(viewModel.isPaused ? "Resume" : "Pause", systemImage: viewModel.isPaused ? "play.fill" : "pause.fill")
-                            .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.borderedProminent)
                     .accessibilityLabel(viewModel.isPaused ? "Resume session" : "Pause session")
 
-                    Button(role: .destructive) {
+                    PipSecondaryButton(
+                        title: "Cancel",
+                        systemImage: "xmark",
+                        role: .destructive
+                    ) {
                         viewModel.cancelSession()
-                    } label: {
-                        Label("Cancel", systemImage: "xmark")
-                            .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.bordered)
                     .accessibilityLabel("Cancel session")
                 }
             } else {
-                Button {
+                PipPrimaryButton(
+                    title: viewModel.primaryActionTitle,
+                    systemImage: "play.fill"
+                ) {
                     viewModel.start()
-                } label: {
-                    Label(viewModel.primaryActionTitle, systemImage: "play.fill")
-                        .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
                 .accessibilityIdentifier("home.start")
                 .accessibilityLabel(viewModel.state == .done ? "Start again" : "Start session")
             }
@@ -220,45 +269,16 @@ public struct HomeView: View {
 }
 
 private struct HomeLayout {
-    let spacing: CGFloat
     let pipSize: CGFloat
     let headerHeight: CGFloat
+    let stageHeight: CGFloat
 
-    init(for height: CGFloat) {
-        if height < 1_100 {
-            spacing = 16
-            pipSize = 144
-            headerHeight = 56
-        } else {
-            spacing = 24
-            pipSize = 220
-            headerHeight = 64
-        }
-    }
-}
-
-private struct PipFrameView: View {
-    let stage: PipStage
-    let frameIndex: Int
-    let reduceMotion: Bool
-
-    var body: some View {
-        ZStack {
-            Image(stage.assetName)
-                .resizable()
-                .scaledToFit()
-                .scaleEffect(reduceMotion ? 1 : stage.scale(for: frameIndex))
-                .id("\(stage.rawValue)-\(frameIndex)")
-                .transition(
-                    reduceMotion
-                        ? .opacity
-                        : .scale(scale: 0.9).combined(with: .opacity)
-                )
-        }
-        .animation(
-            reduceMotion ? .easeInOut(duration: 0.2) : .easeInOut(duration: 0.35),
-            value: "\(stage.rawValue)-\(frameIndex)"
-        )
+    init(for size: CGSize) {
+        headerHeight = size.height < 700 ? 48 : 54
+        let chrome = headerHeight + 210
+        let proposed = min(size.width - 48, size.height - chrome)
+        pipSize = min(max(proposed, 176), 340)
+        stageHeight = pipSize + 52
     }
 }
 
@@ -267,10 +287,12 @@ private struct StartExplanationSheet: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
-                Image(systemName: "figure.mind.and.body")
-                    .font(.system(size: 44))
-                    .foregroundStyle(PipTheme.mint)
+            VStack(spacing: 18) {
+                Image("idle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 120, height: 120)
+                    .accessibilityHidden(true)
 
                 Text("A short Pip session")
                     .font(.title2.weight(.semibold))
@@ -279,14 +301,14 @@ private struct StartExplanationSheet: View {
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
 
-                Button("Start session") {
+                PipPrimaryButton(title: "Start session", systemImage: "play.fill") {
                     viewModel.confirmStartExplanation()
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
                 .accessibilityLabel("Start session")
             }
             .padding(24)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(PipTheme.background(for: .light))
             .navigationTitle("Before you begin")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

@@ -18,6 +18,7 @@ struct PipRootView: View {
 
     var body: some View {
         HomeView(snapshotStore: snapshotStore, modelContext: modelContext)
+            .tint(PipTheme.mintDeep)
             .task {
                 notificationAuthorization.start()
             }

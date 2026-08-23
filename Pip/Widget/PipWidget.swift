@@ -5,22 +5,27 @@ struct PipWidgetEntryView: View {
     let entry: PipWidgetEntry
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Circle()
-                    .fill(PipTheme.mint)
-                    .frame(width: 22, height: 22)
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 8) {
+                Image(widgetAssetName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 42, height: 42)
+                    .accessibilityHidden(true)
                 Text("Pip")
-                    .font(.headline)
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(PipTheme.ink)
+                Spacer(minLength: 0)
             }
 
             switch entry.surface {
             case let .valid(snapshot):
                 Text("\(snapshot.todayCompletedCount)")
-                    .font(.system(size: 32, weight: .bold, design: .rounded))
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundStyle(PipTheme.ink)
                 Text(stateTitle(snapshot.pipStaticState))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(PipTheme.mintDeep)
                 if let nextReminderAt = snapshot.nextReminderAt {
                     Text("Next \(nextReminderAt, style: .time)")
                         .font(.caption2)
@@ -33,6 +38,7 @@ struct PipWidgetEntryView: View {
             case .empty:
                 Text("No data yet")
                     .font(.headline)
+                    .foregroundStyle(PipTheme.ink)
                 Text("Open Pip to refresh this snapshot.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -44,6 +50,19 @@ struct PipWidgetEntryView: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel(accessibilityLabel)
+    }
+
+    private var widgetAssetName: String {
+        switch entry.surface {
+        case let .valid(snapshot):
+            switch snapshot.pipStaticState {
+            case .idle: return "idle"
+            case .waiting: return "waiting"
+            case .done: return "done"
+            }
+        case .empty:
+            return "waiting"
+        }
     }
 
     private var accessibilityLabel: String {

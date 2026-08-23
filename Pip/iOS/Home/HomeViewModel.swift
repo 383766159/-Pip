@@ -25,6 +25,7 @@ public final class HomeViewModel: ObservableObject {
     @Published public var isExplanationPresented = false
     @Published public private(set) var accessibilityAnnouncement = ""
     @Published public private(set) var snapshotWriteErrorMessage: String?
+    @Published public private(set) var phaseStartedAt: Date
 
     public private(set) var engine: SessionEngine
     public private(set) var hapticEvents: [HomeHaptic] = []
@@ -59,6 +60,7 @@ public final class HomeViewModel: ObservableObject {
             ? snapshot.todayCompletedCount
             : 0
         self.remainingSeconds = engine.configuration.totalDuration
+        self.phaseStartedAt = currentDate
     }
 
     public var totalSessionSeconds: Int {
@@ -171,6 +173,7 @@ public final class HomeViewModel: ObservableObject {
         isPaused = false
 
         let events = engine.start()
+        phaseStartedAt = now()
         syncPresentationFromEngine()
         handle(events)
         startClock()
@@ -198,6 +201,7 @@ public final class HomeViewModel: ObservableObject {
 
         _ = engine.resume()
         isPaused = false
+        phaseStartedAt = now().addingTimeInterval(-TimeInterval(elapsedSecondsInPhase))
         syncPresentationFromEngine()
         accessibilityAnnouncement = "Resumed. \(stage.accessibilityTitle). \(remainingSeconds) seconds remaining."
     }
@@ -217,6 +221,7 @@ public final class HomeViewModel: ObservableObject {
         elapsedSecondsInPhase = 0
         remainingSeconds = totalSessionSeconds
         sessionStartedAt = nil
+        phaseStartedAt = now()
         accessibilityAnnouncement = "Session cancelled. Ready to start."
     }
 
@@ -283,6 +288,10 @@ public final class HomeViewModel: ObservableObject {
             remainingSeconds = 0
         case .cancelled:
             stage = .idle
+        }
+
+        if stage != previousStage {
+            phaseStartedAt = now()
         }
 
         if state == .session, stage != previousStage {

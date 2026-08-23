@@ -4,6 +4,7 @@ import SwiftUI
 @MainActor
 public struct CalendarView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.colorScheme) private var colorScheme
     @StateObject private var viewModel: CalendarViewModel
 
     public init() {
@@ -24,6 +25,8 @@ public struct CalendarView: View {
             }
             .padding(20)
         }
+        .background(PipTheme.background(for: colorScheme).ignoresSafeArea())
+        .tint(PipTheme.mintDeep)
         .navigationTitle("Calendar")
         .task {
             viewModel.load(context: modelContext)
@@ -105,9 +108,9 @@ public struct CalendarView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 42)
-            .background(isSelected ? PipTheme.mint.opacity(0.22) : Color.clear)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .frame(height: 48)
+            .background(isSelected ? PipTheme.mint.opacity(0.28) : PipTheme.surface(for: colorScheme))
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
         .buttonStyle(.plain)
         .accessibilityLabel(dayAccessibilityLabel(for: date, count: count))
@@ -128,9 +131,9 @@ public struct CalendarView: View {
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: PipTheme.cornerRadius))
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(18)
+        .background(PipTheme.surface(for: colorScheme), in: RoundedRectangle(cornerRadius: PipTheme.cornerRadius, style: .continuous))
         .accessibilityElement(children: .combine)
     }
 

@@ -21,13 +21,21 @@ public enum PipStage: String, CaseIterable, Sendable {
         rawValue
     }
 
-    public var frameCount: Int {
+    public var animationAssetNames: [String] {
         switch self {
-        case .idle, .done:
-            return 2
-        case .lift, .release:
-            return 3
+        case .idle:
+            return ["idle"]
+        case .lift:
+            return ["lift1", "lift2", "lift3", "lift4"]
+        case .release:
+            return ["release1", "release2", "release3"]
+        case .done:
+            return ["done"]
         }
+    }
+
+    public var frameCount: Int {
+        animationAssetNames.count
     }
 
     public var accessibilityTitle: String {
@@ -40,6 +48,32 @@ public enum PipStage: String, CaseIterable, Sendable {
             return "Release"
         case .done:
             return "Complete"
+        }
+    }
+
+    public var effortTitle: String {
+        switch self {
+        case .idle:
+            return "Ready"
+        case .lift:
+            return "Squeeze"
+        case .release:
+            return "Release"
+        case .done:
+            return "Nice work"
+        }
+    }
+
+    public var effortSubtitle: String {
+        switch self {
+        case .idle:
+            return "A short guided kegel"
+        case .lift:
+            return "Lift and hold"
+        case .release:
+            return "Let it go"
+        case .done:
+            return "48 seconds complete"
         }
     }
 
@@ -71,6 +105,24 @@ public enum PipStage: String, CaseIterable, Sendable {
         let safeElapsed = max(0, min(elapsedSecondsInPhase, safeDuration - 1))
         let progress = Double(safeElapsed) / Double(safeDuration)
         return min(frameCount - 1, Int(progress * Double(frameCount)))
+    }
+
+    public func animationAsset(
+        progress: Double,
+        reduceMotion: Bool
+    ) -> String {
+        if reduceMotion {
+            return assetName
+        }
+
+        let names = animationAssetNames
+        guard names.count > 1 else {
+            return names[0]
+        }
+
+        let clamped = min(max(progress, 0), 0.999)
+        let index = min(names.count - 1, Int(clamped * Double(names.count)))
+        return names[index]
     }
 
     public func scale(for frameIndex: Int) -> CGFloat {

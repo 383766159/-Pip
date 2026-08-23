@@ -11,6 +11,7 @@ struct PipWatchRootView: View {
             VStack(spacing: 10) {
                 Text("Pip")
                     .font(.headline)
+                    .foregroundStyle(PipTheme.ink)
 
                 if let snapshot {
                     Text("Today \(snapshot.todayCompletedCount)")
@@ -25,7 +26,7 @@ struct PipWatchRootView: View {
 
                 ProgressView(value: session.progress)
                     .progressViewStyle(.circular)
-                    .tint(.mint)
+                    .tint(PipTheme.mint)
                     .frame(width: 88, height: 88)
                     .overlay {
                         Text("\(session.remainingSeconds)s")
@@ -54,6 +55,7 @@ struct PipWatchRootView: View {
             }
             .padding()
         }
+        .tint(PipTheme.mint)
         .task {
             snapshot = snapshotReader.read()
             session.startClock()

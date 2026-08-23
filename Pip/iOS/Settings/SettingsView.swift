@@ -6,6 +6,7 @@ public struct SettingsView: View {
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.colorScheme) private var colorScheme
 
     public init() {}
 
@@ -67,6 +68,9 @@ public struct SettingsView: View {
                         .accessibilityLabel("Pip version \(PipAccessibilitySupport.versionDescription())")
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(PipTheme.background(for: colorScheme).ignoresSafeArea())
+            .tint(PipTheme.mintDeep)
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {

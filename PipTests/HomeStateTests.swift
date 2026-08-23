@@ -213,6 +213,10 @@ final class HomeStateTests: XCTestCase {
 
         XCTAssertEqual(PipStage.staticFrameCount, 10)
         XCTAssertEqual(viewModel.frameIndex(reduceMotion: true), 0)
+        XCTAssertEqual(PipStage.lift.animationAssetNames.count, 4)
+        XCTAssertEqual(PipStage.release.animationAssetNames.count, 3)
+        XCTAssertEqual(PipStage.lift.animationAsset(progress: 0, reduceMotion: true), "lift")
+        XCTAssertEqual(PipStage.lift.animationAsset(progress: 0.99, reduceMotion: false), "lift4")
 
         viewModel.beginSession()
         viewModel.advance(by: 3)
