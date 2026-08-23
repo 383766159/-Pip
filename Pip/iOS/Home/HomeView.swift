@@ -135,11 +135,18 @@ public struct HomeView: View {
                 .blur(radius: 18)
 
             if viewModel.state == .session {
-                PipSessionRing(
-                    progress: sessionProgress,
-                    isLift: viewModel.stage == .lift
-                )
-                .frame(width: ringSize, height: ringSize)
+                TimelineView(
+                    .animation(
+                        minimumInterval: reduceMotion ? 1 : 1.0 / 120.0,
+                        paused: reduceMotion || viewModel.isPaused
+                    )
+                ) { context in
+                    PipSessionRing(
+                        progress: ringProgress(at: context.date),
+                        isLift: viewModel.stage == .lift
+                    )
+                    .frame(width: ringSize, height: ringSize)
+                }
             }
 
             PipCharacterView(
@@ -173,9 +180,9 @@ public struct HomeView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    private var sessionProgress: Double {
+    private func ringProgress(at date: Date) -> Double {
         let total = Double(max(viewModel.totalSessionSeconds, 1))
-        return 1 - (Double(viewModel.remainingSeconds) / total)
+        return 1 - (viewModel.visualRemainingSeconds(at: date) / total)
     }
 
     private var statusBlock: some View {
@@ -288,11 +295,7 @@ private struct StartExplanationSheet: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 18) {
-                Image("idle")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 120, height: 120)
-                    .accessibilityHidden(true)
+                PipMascotCanvas(pose: .rest, size: 120)
 
                 Text("A short Pip session")
                     .font(.title2.weight(.semibold))

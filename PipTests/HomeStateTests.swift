@@ -217,6 +217,35 @@ final class HomeStateTests: XCTestCase {
         XCTAssertEqual(PipStage.release.animationAssetNames.count, 3)
         XCTAssertEqual(PipStage.lift.animationAsset(progress: 0, reduceMotion: true), "lift")
         XCTAssertEqual(PipStage.lift.animationAsset(progress: 0.99, reduceMotion: false), "lift4")
+        XCTAssertEqual(PipMascotMotion.framesPerPhase, 120)
+
+        let liftEnd = PipMascotMotion.pose(
+            stage: .lift,
+            homeState: .session,
+            progress: 1,
+            time: 0,
+            reduceMotion: false
+        )
+        let releaseStart = PipMascotMotion.pose(
+            stage: .release,
+            homeState: .session,
+            progress: 0,
+            time: 0,
+            reduceMotion: false
+        )
+        XCTAssertEqual(liftEnd.stretchY, releaseStart.stretchY, accuracy: 0.01)
+        XCTAssertEqual(liftEnd.stretchX, releaseStart.stretchX, accuracy: 0.01)
+        XCTAssertEqual(liftEnd.mouth, releaseStart.mouth, accuracy: 0.01)
+
+        let releaseEnd = PipMascotMotion.pose(
+            stage: .release,
+            homeState: .session,
+            progress: 1,
+            time: 0,
+            reduceMotion: false
+        )
+        XCTAssertEqual(releaseEnd.stretchY, PipMascotPose.rest.stretchY, accuracy: 0.01)
+        XCTAssertEqual(releaseEnd.mouth, PipMascotPose.rest.mouth, accuracy: 0.01)
 
         viewModel.beginSession()
         viewModel.advance(by: 3)

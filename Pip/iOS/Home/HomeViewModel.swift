@@ -126,6 +126,25 @@ public final class HomeViewModel: ObservableObject {
         )
     }
 
+    public func visualProgress(at date: Date) -> Double {
+        let duration = max(Double(phaseDuration), 0.001)
+        if isPaused || state != .session {
+            return min(1, Double(elapsedSecondsInPhase) / duration)
+        }
+        return min(max(date.timeIntervalSince(phaseStartedAt) / duration, 0), 1)
+    }
+
+    public func visualRemainingSeconds(at date: Date) -> Double {
+        guard state == .session else {
+            return Double(remainingSeconds)
+        }
+        if isPaused {
+            return Double(remainingSeconds)
+        }
+        let extra = date.timeIntervalSince(phaseStartedAt) - Double(elapsedSecondsInPhase)
+        return max(0, Double(remainingSeconds) - extra)
+    }
+
     public func start() {
         guard state == .idle || state == .done else {
             return
