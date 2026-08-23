@@ -1,0 +1,761 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		200000000000000000000001 /* SessionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000001 /* SessionRecord.swift */; };
+		200000000000000000000002 /* ReminderSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000002 /* ReminderSlot.swift */; };
+		200000000000000000000003 /* CalendarDayStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000003 /* CalendarDayStat.swift */; };
+		200000000000000000000004 /* StreakState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000004 /* StreakState.swift */; };
+		200000000000000000000005 /* PipSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000005 /* PipSnapshot.swift */; };
+		200000000000000000000006 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000006 /* LocalStore.swift */; };
+		200000000000000000000007 /* PipSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000007 /* PipSnapshotStore.swift */; };
+		200000000000000000000008 /* PipTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000008 /* PipTheme.swift */; };
+		200000000000000000000009 /* PipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000009 /* PipApp.swift */; };
+		20000000000000000000000A /* PipRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000A /* PipRootView.swift */; };
+		20000000000000000000000B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000D /* Assets.xcassets */; };
+		20000000000000000000000C /* PipWatchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000B /* PipWatchExtension.swift */; };
+		20000000000000000000000D /* PipSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000005 /* PipSnapshot.swift */; };
+		20000000000000000000000E /* PipSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000007 /* PipSnapshotStore.swift */; };
+		20000000000000000000000F /* PipTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000008 /* PipTheme.swift */; };
+		200000000000000000000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000D /* Assets.xcassets */; };
+		200000000000000000000011 /* PipWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000C /* PipWidget.swift */; };
+		200000000000000000000012 /* PipSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000005 /* PipSnapshot.swift */; };
+		200000000000000000000013 /* PipSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000007 /* PipSnapshotStore.swift */; };
+		200000000000000000000014 /* PipTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000008 /* PipTheme.swift */; };
+		200000000000000000000015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000D /* Assets.xcassets */; };
+		200000000000000000000016 /* PipPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000015 /* PipPersistenceTests.swift */; };
+		200000000000000000000017 /* PipWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 100000000000000000000017 /* PipWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		200000000000000000000018 /* PipWatchExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 100000000000000000000018 /* PipWatchExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		200000000000000000000019 /* SessionPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001C /* SessionPhase.swift */; };
+		20000000000000000000001A /* SessionConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001D /* SessionConfiguration.swift */; };
+		20000000000000000000001B /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001E /* SessionEngine.swift */; };
+		20000000000000000000001C /* SessionEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001F /* SessionEngineTests.swift */; };
+		20000000000000000000001D /* SessionPhase.swift in Watch Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001C /* SessionPhase.swift */; };
+		20000000000000000000001E /* SessionConfiguration.swift in Watch Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001D /* SessionConfiguration.swift */; };
+		20000000000000000000001F /* SessionEngine.swift in Watch Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001E /* SessionEngine.swift */; };
+		200000000000000000000020 /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000020 /* HomeState.swift */; };
+		200000000000000000000021 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000021 /* HomeViewModel.swift */; };
+		200000000000000000000022 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000022 /* HomeView.swift */; };
+		200000000000000000000023 /* PipStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000023 /* PipStage.swift */; };
+		200000000000000000000024 /* HomeStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000024 /* HomeStateTests.swift */; };
+		200000000000000000000025 /* NotificationAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000025 /* NotificationAuthorization.swift */; };
+		200000000000000000000026 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000026 /* ReminderScheduler.swift */; };
+		200000000000000000000027 /* ReminderSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000027 /* ReminderSettingsViewModel.swift */; };
+		200000000000000000000028 /* ReminderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000028 /* ReminderSettingsView.swift */; };
+		200000000000000000000029 /* ReminderSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000029 /* ReminderSchedulerTests.swift */; };
+		200000000000000000000030 /* StreakCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000030 /* StreakCalculator.swift */; };
+		200000000000000000000031 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000031 /* CalendarViewModel.swift */; };
+		200000000000000000000032 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000032 /* CalendarView.swift */; };
+		200000000000000000000033 /* StreakCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000033 /* StreakCalculatorTests.swift */; };
+		200000000000000000000034 /* WatchSurfaceSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000034 /* WatchSurfaceSnapshot.swift */; };
+		200000000000000000000035 /* WatchSessionModel.swift in Watch Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000035 /* WatchSessionModel.swift */; };
+		200000000000000000000036 /* PipWatchComplications.swift in Watch Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000036 /* PipWatchComplications.swift */; };
+		200000000000000000000037 /* WatchSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000037 /* WatchSessionTests.swift */; };
+		200000000000000000000038 /* PipWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000038 /* PipWidgetEntry.swift */; };
+		200000000000000000000039 /* PipWidgetProvider.swift in Widget Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000039 /* PipWidgetProvider.swift */; };
+		200000000000000000000040 /* WidgetSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000040 /* WidgetSnapshotTests.swift */; };
+		200000000000000000000041 /* PipPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000041 /* PipPreferences.swift */; };
+		200000000000000000000042 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000042 /* SettingsViewModel.swift */; };
+		200000000000000000000043 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000043 /* SettingsView.swift */; };
+		200000000000000000000044 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000044 /* PrivacyView.swift */; };
+		200000000000000000000045 /* AccessibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000045 /* AccessibilityView.swift */; };
+		200000000000000000000046 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000046 /* PrivacyInfo.xcprivacy */; };
+		200000000000000000000047 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000047 /* SettingsTests.swift */; };
+		200000000000000000000048 /* AccessibilitySupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000048 /* AccessibilitySupport.swift */; };
+		200000000000000000000049 /* PipWidgetSnapshotReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000049 /* PipWidgetSnapshotReader.swift */; };
+		200000000000000000000050 /* PipWidgetSnapshotReader.swift in Widget Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000049 /* PipWidgetSnapshotReader.swift */; };
+		200000000000000000000051 /* LocalStatsRebuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000050 /* LocalStatsRebuilder.swift */; };
+		200000000000000000000052 /* LocalStatsRebuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000051 /* LocalStatsRebuilderTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		500000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000001;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000000000002;
+			remoteInfo = PipWatch;
+		};
+		500000000000000000000002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000001;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000000000003;
+			remoteInfo = PipWatchExtension;
+		};
+		500000000000000000000003 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000001;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000000000005;
+			remoteInfo = Pip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		300000000000000000000004 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			 dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				200000000000000000000017 /* PipWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		300000000000000000000008 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				200000000000000000000018 /* PipWatchExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		100000000000000000000001 /* SessionRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionRecord.swift; sourceTree = "<group>"; };
+		100000000000000000000002 /* ReminderSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderSlot.swift; sourceTree = "<group>"; };
+		100000000000000000000003 /* CalendarDayStat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayStat.swift; sourceTree = "<group>"; };
+		100000000000000000000004 /* StreakState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakState.swift; sourceTree = "<group>"; };
+		100000000000000000000005 /* PipSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipSnapshot.swift; sourceTree = "<group>"; };
+		100000000000000000000006 /* LocalStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStore.swift; sourceTree = "<group>"; };
+		100000000000000000000007 /* PipSnapshotStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipSnapshotStore.swift; sourceTree = "<group>"; };
+		100000000000000000000008 /* PipTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipTheme.swift; sourceTree = "<group>"; };
+		100000000000000000000009 /* PipApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipApp.swift; sourceTree = "<group>"; };
+		10000000000000000000000A /* PipRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipRootView.swift; sourceTree = "<group>"; };
+		10000000000000000000000B /* PipWatchExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipWatchExtension.swift; sourceTree = "<group>"; };
+		10000000000000000000000C /* PipWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipWidget.swift; sourceTree = "<group>"; };
+		10000000000000000000000D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10000000000000000000000E /* Pip Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10000000000000000000000F /* Pip.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Pip.entitlements; sourceTree = "<group>"; };
+		100000000000000000000010 /* Watch Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		100000000000000000000011 /* Watch Extension Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PipWatchExtension-Info.plist"; sourceTree = "<group>"; };
+		100000000000000000000012 /* PipWatchExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = PipWatchExtension.entitlements; sourceTree = "<group>"; };
+		10000000000000000000001B /* PipWatchApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = PipWatchApp.entitlements; sourceTree = "<group>"; };
+		100000000000000000000013 /* Widget Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		100000000000000000000014 /* PipWidget.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = PipWidget.entitlements; sourceTree = "<group>"; };
+		100000000000000000000015 /* PipPersistenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipPersistenceTests.swift; sourceTree = "<group>"; };
+		10000000000000000000001C /* SessionPhase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionPhase.swift; sourceTree = "<group>"; };
+		10000000000000000000001D /* SessionConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionConfiguration.swift; sourceTree = "<group>"; };
+		10000000000000000000001E /* SessionEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEngine.swift; sourceTree = "<group>"; };
+		10000000000000000000001F /* SessionEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEngineTests.swift; sourceTree = "<group>"; };
+		100000000000000000000020 /* HomeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
+		100000000000000000000021 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000022 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		100000000000000000000023 /* PipStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipStage.swift; sourceTree = "<group>"; };
+		100000000000000000000024 /* HomeStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeStateTests.swift; sourceTree = "<group>"; };
+		100000000000000000000025 /* NotificationAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAuthorization.swift; sourceTree = "<group>"; };
+		100000000000000000000026 /* ReminderScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
+		100000000000000000000027 /* ReminderSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderSettingsViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000028 /* ReminderSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
+		100000000000000000000029 /* ReminderSchedulerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderSchedulerTests.swift; sourceTree = "<group>"; };
+		100000000000000000000030 /* StreakCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakCalculator.swift; sourceTree = "<group>"; };
+		100000000000000000000031 /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000032 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		100000000000000000000033 /* StreakCalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreakCalculatorTests.swift; sourceTree = "<group>"; };
+		100000000000000000000034 /* WatchSurfaceSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSurfaceSnapshot.swift; sourceTree = "<group>"; };
+		100000000000000000000035 /* WatchSessionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionModel.swift; sourceTree = "<group>"; };
+		100000000000000000000036 /* PipWatchComplications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipWatchComplications.swift; sourceTree = "<group>"; };
+		100000000000000000000037 /* WatchSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionTests.swift; sourceTree = "<group>"; };
+		100000000000000000000038 /* PipWidgetEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipWidgetEntry.swift; sourceTree = "<group>"; };
+		100000000000000000000039 /* PipWidgetProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipWidgetProvider.swift; sourceTree = "<group>"; };
+		100000000000000000000040 /* WidgetSnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotTests.swift; sourceTree = "<group>"; };
+		100000000000000000000041 /* PipPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipPreferences.swift; sourceTree = "<group>"; };
+		100000000000000000000042 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000043 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		100000000000000000000044 /* PrivacyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
+		100000000000000000000045 /* AccessibilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessibilityView.swift; sourceTree = "<group>"; };
+		100000000000000000000046 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		100000000000000000000047 /* SettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
+		100000000000000000000048 /* AccessibilitySupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessibilitySupport.swift; sourceTree = "<group>"; };
+		100000000000000000000049 /* PipWidgetSnapshotReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipWidgetSnapshotReader.swift; sourceTree = "<group>"; };
+		100000000000000000000050 /* LocalStatsRebuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStatsRebuilder.swift; sourceTree = "<group>"; };
+		100000000000000000000051 /* LocalStatsRebuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStatsRebuilderTests.swift; sourceTree = "<group>"; };
+		100000000000000000000016 /* Pip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		100000000000000000000017 /* PipWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PipWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		100000000000000000000018 /* PipWatchExtension.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = PipWatchExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		100000000000000000000019 /* PipWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = PipWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		10000000000000000000001A /* PipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		300000000000000000000003 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+		300000000000000000000007 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+		30000000000000000000000B /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+		30000000000000000000000E /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+		300000000000000000000011 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000000000000000000000010 = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000011 /* Pip */,
+				00000000000000000000001F /* PipTests */,
+				000000000000000000000020 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000000000000000000000011 /* Pip */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000012 /* Shared */,
+				000000000000000000000016 /* iOS */,
+				000000000000000000000019 /* Watch */,
+				00000000000000000000001D /* Widget */,
+				100000000000000000000046 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Pip;
+			sourceTree = "<group>";
+		};
+		000000000000000000000012 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000013 /* Models */,
+				000000000000000000000014 /* Persistence */,
+				000000000000000000000015 /* DesignSystem */,
+				000000000000000000000021 /* Exercise */,
+				000000000000000000000026 /* Stats */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		000000000000000000000021 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000001C /* SessionPhase.swift */,
+				10000000000000000000001D /* SessionConfiguration.swift */,
+				10000000000000000000001E /* SessionEngine.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		000000000000000000000026 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000030 /* StreakCalculator.swift */,
+				100000000000000000000050 /* LocalStatsRebuilder.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		000000000000000000000013 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000001 /* SessionRecord.swift */,
+				100000000000000000000002 /* ReminderSlot.swift */,
+				100000000000000000000003 /* CalendarDayStat.swift */,
+				100000000000000000000004 /* StreakState.swift */,
+				100000000000000000000005 /* PipSnapshot.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		000000000000000000000014 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000006 /* LocalStore.swift */,
+				100000000000000000000007 /* PipSnapshotStore.swift */,
+				100000000000000000000049 /* PipWidgetSnapshotReader.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		000000000000000000000015 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000008 /* PipTheme.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		000000000000000000000016 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000017 /* App */,
+				000000000000000000000022 /* Home */,
+				000000000000000000000025 /* Reminders */,
+				000000000000000000000027 /* Calendar */,
+				000000000000000000000028 /* Settings */,
+				000000000000000000000018 /* Resources */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		000000000000000000000017 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000009 /* PipApp.swift */,
+				10000000000000000000000A /* PipRootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		000000000000000000000022 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000020 /* HomeState.swift */,
+				100000000000000000000021 /* HomeViewModel.swift */,
+				100000000000000000000022 /* HomeView.swift */,
+				100000000000000000000023 /* PipStage.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		000000000000000000000025 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000025 /* NotificationAuthorization.swift */,
+				100000000000000000000026 /* ReminderScheduler.swift */,
+				100000000000000000000027 /* ReminderSettingsViewModel.swift */,
+				100000000000000000000028 /* ReminderSettingsView.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		000000000000000000000027 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000031 /* CalendarViewModel.swift */,
+				100000000000000000000032 /* CalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		000000000000000000000028 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000041 /* PipPreferences.swift */,
+				100000000000000000000042 /* SettingsViewModel.swift */,
+				100000000000000000000043 /* SettingsView.swift */,
+				100000000000000000000044 /* PrivacyView.swift */,
+				100000000000000000000045 /* AccessibilityView.swift */,
+				100000000000000000000048 /* AccessibilitySupport.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		000000000000000000000018 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000000E /* Pip Info.plist */,
+				10000000000000000000000F /* Pip.entitlements */,
+				10000000000000000000000D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		000000000000000000000019 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				00000000000000000000001A /* App */,
+				00000000000000000000001B /* Extension */,
+				00000000000000000000001C /* Resources */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
+		00000000000000000000001A /* App */ = {isa = PBXGroup; children = ( ); path = App; sourceTree = "<group>"; };
+		00000000000000000000001B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000000B /* PipWatchExtension.swift */,
+				100000000000000000000034 /* WatchSurfaceSnapshot.swift */,
+				100000000000000000000035 /* WatchSessionModel.swift */,
+				100000000000000000000036 /* PipWatchComplications.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		00000000000000000000001C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000010 /* Watch Info.plist */,
+				100000000000000000000011 /* Watch Extension Info.plist */,
+				100000000000000000000012 /* PipWatchExtension.entitlements */,
+				10000000000000000000001B /* PipWatchApp.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		00000000000000000000001D /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000000C /* PipWidget.swift */,
+				100000000000000000000038 /* PipWidgetEntry.swift */,
+				100000000000000000000039 /* PipWidgetProvider.swift */,
+				00000000000000000000001E /* Resources */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		00000000000000000000001E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000013 /* Widget Info.plist */,
+				100000000000000000000014 /* PipWidget.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		00000000000000000000001F /* PipTests */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000015 /* PipPersistenceTests.swift */,
+				10000000000000000000001F /* SessionEngineTests.swift */,
+				100000000000000000000024 /* HomeStateTests.swift */,
+				100000000000000000000029 /* ReminderSchedulerTests.swift */,
+				100000000000000000000033 /* StreakCalculatorTests.swift */,
+				100000000000000000000037 /* WatchSessionTests.swift */,
+				100000000000000000000040 /* WidgetSnapshotTests.swift */,
+				100000000000000000000047 /* SettingsTests.swift */,
+				100000000000000000000051 /* LocalStatsRebuilderTests.swift */,
+			);
+			path = PipTests;
+			sourceTree = "<group>";
+		};
+		000000000000000000000020 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000016 /* Pip.app */,
+				100000000000000000000017 /* PipWatch.app */,
+				100000000000000000000018 /* PipWatchExtension.appex */,
+				100000000000000000000019 /* PipWidgetExtension.appex */,
+				10000000000000000000001A /* PipTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000000000000000000002 /* PipWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000004 /* Build configuration list for PBXNativeTarget "PipWatch" */;
+			buildPhases = (
+				300000000000000000000005 /* Sources */,
+				300000000000000000000006 /* Resources */,
+				300000000000000000000007 /* Frameworks */,
+				300000000000000000000008 /* Embed App Extensions */,
+			);
+			buildRules = ( );
+			dependencies = (
+				400000000000000000000002 /* PBXTargetDependency */,
+			);
+			name = PipWatch;
+			productName = PipWatch;
+			productReference = 100000000000000000000017 /* PipWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		000000000000000000000003 /* PipWatchExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000006 /* Build configuration list for PBXNativeTarget "PipWatchExtension" */;
+			buildPhases = (
+				300000000000000000000009 /* Sources */,
+				30000000000000000000000A /* Resources */,
+				30000000000000000000000B /* Frameworks */,
+			);
+			buildRules = ( );
+			dependencies = ( );
+			name = PipWatchExtension;
+			productName = PipWatchExtension;
+			productReference = 100000000000000000000018 /* PipWatchExtension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		000000000000000000000004 /* PipWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000008 /* Build configuration list for PBXNativeTarget "PipWidgetExtension" */;
+			buildPhases = (
+				30000000000000000000000C /* Sources */,
+				30000000000000000000000D /* Resources */,
+				30000000000000000000000E /* Frameworks */,
+			);
+			buildRules = ( );
+			dependencies = ( );
+			name = PipWidgetExtension;
+			productName = PipWidgetExtension;
+			productReference = 100000000000000000000019 /* PipWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		000000000000000000000005 /* Pip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000002 /* Build configuration list for PBXNativeTarget "Pip" */;
+			buildPhases = (
+				300000000000000000000001 /* Sources */,
+				300000000000000000000002 /* Resources */,
+				300000000000000000000003 /* Frameworks */,
+			);
+			buildRules = ( );
+			dependencies = ( );
+			name = Pip;
+			productName = Pip;
+			productReference = 100000000000000000000016 /* Pip.app */;
+			productType = "com.apple.product-type.application";
+		};
+		000000000000000000000006 /* PipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60000000000000000000000A /* Build configuration list for PBXNativeTarget "PipTests" */;
+			buildPhases = (
+				30000000000000000000000F /* Sources */,
+				300000000000000000000010 /* Resources */,
+				300000000000000000000011 /* Frameworks */,
+			);
+			buildRules = ( );
+			dependencies = (
+				400000000000000000000003 /* PBXTargetDependency */,
+			);
+			name = PipTests;
+			productName = PipTests;
+			productReference = 10000000000000000000001A /* PipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					000000000000000000000002 = { CreatedOnToolsVersion = 16.0; SystemCapabilities = { com.apple.ApplicationGroups.watchos = { enabled = 1; }; }; };
+					000000000000000000000003 = { CreatedOnToolsVersion = 16.0; SystemCapabilities = { com.apple.ApplicationGroups.watchos = { enabled = 1; }; }; };
+					000000000000000000000004 = { CreatedOnToolsVersion = 16.0; SystemCapabilities = { com.apple.ApplicationGroups.iOS = { enabled = 1; }; }; };
+					000000000000000000000005 = { CreatedOnToolsVersion = 16.0; SystemCapabilities = { com.apple.ApplicationGroups.iOS = { enabled = 1; }; }; };
+					000000000000000000000006 = { CreatedOnToolsVersion = 16.0; TestTargetID = 000000000000000000000005; };
+				};
+			};
+			buildConfigurationList = 600000000000000000000001 /* Build configuration list for PBXProject "Pip" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 000000000000000000000010;
+			productRefGroup = 000000000000000000000020 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000000000000000000000005 /* Pip */,
+				000000000000000000000002 /* PipWatch */,
+				000000000000000000000003 /* PipWatchExtension */,
+				000000000000000000000004 /* PipWidgetExtension */,
+				000000000000000000000006 /* PipTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		300000000000000000000002 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (20000000000000000000000B /* Assets.xcassets in Resources */, 200000000000000000000046 /* PrivacyInfo.xcprivacy in Resources */, ); runOnlyForDeploymentPostprocessing = 0; };
+		300000000000000000000006 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+		30000000000000000000000A /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+		30000000000000000000000D /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+		300000000000000000000010 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		300000000000000000000001 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (200000000000000000000001, 200000000000000000000002, 200000000000000000000003, 200000000000000000000004, 200000000000000000000005, 200000000000000000000006, 200000000000000000000007, 200000000000000000000008, 200000000000000000000009, 20000000000000000000000A, 200000000000000000000019, 20000000000000000000001A, 20000000000000000000001B, 200000000000000000000020, 200000000000000000000021, 200000000000000000000022, 200000000000000000000023, 200000000000000000000025, 200000000000000000000026, 200000000000000000000027, 200000000000000000000028, 200000000000000000000030, 200000000000000000000031, 200000000000000000000032, 200000000000000000000034, 200000000000000000000041, 200000000000000000000042, 200000000000000000000043, 200000000000000000000044, 200000000000000000000045, 200000000000000000000048, 200000000000000000000049, 200000000000000000000051, ); runOnlyForDeploymentPostprocessing = 0; };
+		300000000000000000000005 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = ( ); runOnlyForDeploymentPostprocessing = 0; };
+		300000000000000000000009 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (20000000000000000000000C, 20000000000000000000000D, 20000000000000000000000E, 20000000000000000000000F, 20000000000000000000001D, 20000000000000000000001E, 20000000000000000000001F, 200000000000000000000034, 200000000000000000000035, 200000000000000000000036, ); runOnlyForDeploymentPostprocessing = 0; };
+		30000000000000000000000C /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (200000000000000000000011, 200000000000000000000012, 200000000000000000000013, 200000000000000000000014, 200000000000000000000038, 200000000000000000000039, 200000000000000000000050, ); runOnlyForDeploymentPostprocessing = 0; };
+		30000000000000000000000F /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (200000000000000000000016, 20000000000000000000001C, 200000000000000000000024, 200000000000000000000029, 200000000000000000000033, 200000000000000000000037, 200000000000000000000040, 200000000000000000000047, 200000000000000000000052, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		400000000000000000000001 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = 000000000000000000000002 /* PipWatch */; targetProxy = 500000000000000000000001 /* PBXContainerItemProxy */; };
+		400000000000000000000002 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = 000000000000000000000003 /* PipWatchExtension */; targetProxy = 500000000000000000000002 /* PBXContainerItemProxy */; };
+		400000000000000000000003 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = 000000000000000000000005 /* Pip */; targetProxy = 500000000000000000000003 /* PBXContainerItemProxy */; };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		610000000000000000000001 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; SWIFT_VERSION = 5.9; }; name = Debug; };
+		610000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; SWIFT_VERSION = 5.9; }; name = Release; };
+
+		610000000000000000000003 /* Pip Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+			ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+			CODE_SIGN_ENTITLEMENTS = Pip/Resources/Pip.entitlements;
+			CURRENT_PROJECT_VERSION = 1;
+			DEVELOPMENT_TEAM = "";
+			ENABLE_TESTABILITY = YES;
+			ENABLE_PREVIEWS = YES;
+			GENERATE_INFOPLIST_FILE = NO;
+			INFOPLIST_FILE = Pip/Resources/Info.plist;
+			IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app;
+			PRODUCT_NAME = Pip;
+			SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+			SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+			SWIFT_EMIT_LOC_STRINGS = YES;
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = "1,2";
+		}; name = Debug; };
+		610000000000000000000004 /* Pip Release */ = {isa = XCBuildConfiguration; buildSettings = {
+			ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+			CODE_SIGN_ENTITLEMENTS = Pip/Resources/Pip.entitlements;
+			CURRENT_PROJECT_VERSION = 1;
+			DEVELOPMENT_TEAM = "";
+			ENABLE_TESTABILITY = YES;
+			ENABLE_PREVIEWS = NO;
+			GENERATE_INFOPLIST_FILE = NO;
+			INFOPLIST_FILE = Pip/Resources/Info.plist;
+			IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app;
+			PRODUCT_NAME = Pip;
+			SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+			SWIFT_EMIT_LOC_STRINGS = YES;
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = "1,2";
+			SWIFT_OPTIMIZATION_LEVEL = "-O";
+		}; name = Release; };
+
+		610000000000000000000005 /* PipWatch Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+			CODE_SIGN_ENTITLEMENTS = Pip/Watch/Resources/PipWatchApp.entitlements;
+			CURRENT_PROJECT_VERSION = 1;
+			ENABLE_PREVIEWS = YES;
+			GENERATE_INFOPLIST_FILE = NO;
+			INFOPLIST_FILE = Pip/Watch/Resources/Info.plist;
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app.watchkitapp;
+			PRODUCT_NAME = PipWatch;
+			SUPPORTED_PLATFORMS = "watchos watchsimulator";
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = 4;
+			WATCHOS_DEPLOYMENT_TARGET = 10.0;
+		}; name = Debug; };
+		610000000000000000000006 /* PipWatch Release */ = {isa = XCBuildConfiguration; buildSettings = {
+			CODE_SIGN_ENTITLEMENTS = Pip/Watch/Resources/PipWatchApp.entitlements;
+			CURRENT_PROJECT_VERSION = 1;
+			ENABLE_PREVIEWS = NO;
+			GENERATE_INFOPLIST_FILE = NO;
+			INFOPLIST_FILE = Pip/Watch/Resources/Info.plist;
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app.watchkitapp;
+			PRODUCT_NAME = PipWatch;
+			SUPPORTED_PLATFORMS = "watchos watchsimulator";
+			SWIFT_OPTIMIZATION_LEVEL = "-O";
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = 4;
+			WATCHOS_DEPLOYMENT_TARGET = 10.0;
+		}; name = Release; };
+
+		610000000000000000000007 /* PipWatchExtension Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+			APPLICATION_EXTENSION_API_ONLY = YES;
+			CODE_SIGN_ENTITLEMENTS = Pip/Watch/Resources/PipWatchExtension.entitlements;
+			CURRENT_PROJECT_VERSION = 1;
+			ENABLE_PREVIEWS = YES;
+			GENERATE_INFOPLIST_FILE = NO;
+			INFOPLIST_FILE = Pip/Watch/Resources/PipWatchExtension-Info.plist;
+			LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app.watchkitapp.extension;
+			PRODUCT_NAME = PipWatchExtension;
+			SUPPORTED_PLATFORMS = "watchos watchsimulator";
+			SWIFT_EMIT_LOC_STRINGS = YES;
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = 4;
+			WATCHOS_DEPLOYMENT_TARGET = 10.0;
+		}; name = Debug; };
+		610000000000000000000008 /* PipWatchExtension Release */ = {isa = XCBuildConfiguration; buildSettings = {
+			APPLICATION_EXTENSION_API_ONLY = YES;
+			CODE_SIGN_ENTITLEMENTS = Pip/Watch/Resources/PipWatchExtension.entitlements;
+			CURRENT_PROJECT_VERSION = 1;
+			ENABLE_PREVIEWS = NO;
+			GENERATE_INFOPLIST_FILE = NO;
+			INFOPLIST_FILE = Pip/Watch/Resources/PipWatchExtension-Info.plist;
+			LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app.watchkitapp.extension;
+			PRODUCT_NAME = PipWatchExtension;
+			SUPPORTED_PLATFORMS = "watchos watchsimulator";
+			SWIFT_OPTIMIZATION_LEVEL = "-O";
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = 4;
+			WATCHOS_DEPLOYMENT_TARGET = 10.0;
+		}; name = Release; };
+
+		610000000000000000000009 /* PipWidgetExtension Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+			APPLICATION_EXTENSION_API_ONLY = YES;
+			ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+			CODE_SIGN_ENTITLEMENTS = Pip/Widget/Resources/PipWidget.entitlements;
+			CURRENT_PROJECT_VERSION = 1;
+			ENABLE_PREVIEWS = YES;
+			GENERATE_INFOPLIST_FILE = NO;
+			INFOPLIST_FILE = Pip/Widget/Resources/Info.plist;
+			IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/../../Frameworks");
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app.widget;
+			PRODUCT_NAME = PipWidgetExtension;
+			SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+			SWIFT_EMIT_LOC_STRINGS = YES;
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = "1,2";
+		}; name = Debug; };
+		61000000000000000000000A /* PipWidgetExtension Release */ = {isa = XCBuildConfiguration; buildSettings = {
+			APPLICATION_EXTENSION_API_ONLY = YES;
+			ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+			CODE_SIGN_ENTITLEMENTS = Pip/Widget/Resources/PipWidget.entitlements;
+			CURRENT_PROJECT_VERSION = 1;
+			ENABLE_PREVIEWS = NO;
+			GENERATE_INFOPLIST_FILE = NO;
+			INFOPLIST_FILE = Pip/Widget/Resources/Info.plist;
+			IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/../../Frameworks");
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app.widget;
+			PRODUCT_NAME = PipWidgetExtension;
+			SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+			SWIFT_OPTIMIZATION_LEVEL = "-O";
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = "1,2";
+		}; name = Release; };
+
+		61000000000000000000000B /* PipTests Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+			BUNDLE_LOADER = "$(TEST_HOST)";
+			CURRENT_PROJECT_VERSION = 1;
+			GENERATE_INFOPLIST_FILE = YES;
+			IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app.tests;
+			PRODUCT_NAME = PipTests;
+			SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = "1,2";
+			TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pip.app/Pip";
+		}; name = Debug; };
+		61000000000000000000000C /* PipTests Release */ = {isa = XCBuildConfiguration; buildSettings = {
+			BUNDLE_LOADER = "$(TEST_HOST)";
+			CURRENT_PROJECT_VERSION = 1;
+			GENERATE_INFOPLIST_FILE = YES;
+			IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			PRODUCT_BUNDLE_IDENTIFIER = com.pip.app.tests;
+			PRODUCT_NAME = PipTests;
+			SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+			SWIFT_OPTIMIZATION_LEVEL = "-O";
+			SWIFT_VERSION = 5.9;
+			TARGETED_DEVICE_FAMILY = "1,2";
+			TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pip.app/Pip";
+		}; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		600000000000000000000001 /* Build configuration list for PBXProject "Pip" */ = {isa = XCConfigurationList; buildConfigurations = (610000000000000000000001, 610000000000000000000002, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		600000000000000000000002 /* Build configuration list for PBXNativeTarget "Pip" */ = {isa = XCConfigurationList; buildConfigurations = (610000000000000000000003, 610000000000000000000004, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		600000000000000000000004 /* Build configuration list for PBXNativeTarget "PipWatch" */ = {isa = XCConfigurationList; buildConfigurations = (610000000000000000000005, 610000000000000000000006, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		600000000000000000000006 /* Build configuration list for PBXNativeTarget "PipWatchExtension" */ = {isa = XCConfigurationList; buildConfigurations = (610000000000000000000007, 610000000000000000000008, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		600000000000000000000008 /* Build configuration list for PBXNativeTarget "PipWidgetExtension" */ = {isa = XCConfigurationList; buildConfigurations = (610000000000000000000009, 61000000000000000000000A, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		60000000000000000000000A /* Build configuration list for PBXNativeTarget "PipTests" */ = {isa = XCConfigurationList; buildConfigurations = (61000000000000000000000B, 61000000000000000000000C, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = 000000000000000000000001 /* Project object */;
+}

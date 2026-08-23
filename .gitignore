@@ -37,6 +37,10 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
+# Xcode build products and macOS metadata
+build/
+.DS_Store
+
 # Dependency directories
 node_modules/
 jspm_packages/
