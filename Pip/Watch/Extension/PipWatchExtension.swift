@@ -3,57 +3,63 @@ import SwiftUI
 struct PipWatchRootView: View {
     @StateObject private var session = WatchSessionModel()
     @State private var snapshot: PipSnapshot?
+    @Environment(\.colorScheme) private var colorScheme
 
     private let snapshotReader = WatchSurfaceSnapshotReader()
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 10) {
-                Text("Pip")
-                    .font(.headline)
-                    .foregroundStyle(PipTheme.ink)
-
-                if let snapshot {
-                    Text("Today \(snapshot.todayCompletedCount)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                } else {
-                    Text("Snapshot unavailable")
+            VStack(spacing: 6) {
+                HStack {
+                    Text("Pip")
+                        .font(.headline)
+                        .foregroundStyle(PipTheme.ink(for: colorScheme))
+                    Spacer(minLength: 4)
+                    Text("Today \(snapshot?.todayCompletedCount ?? 0)")
                         .font(.caption2)
                         .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
                 }
 
-                ProgressView(value: session.progress)
-                    .progressViewStyle(.circular)
-                    .tint(PipTheme.mint)
-                    .frame(width: 88, height: 88)
-                    .overlay {
-                        Text("\(session.remainingSeconds)s")
-                            .font(.caption2.monospacedDigit())
-                    }
-                    .accessibilityLabel("Session progress")
-                    .accessibilityValue("\(session.remainingSeconds) seconds remaining")
+                HStack(spacing: 6) {
+                    PipWatchCharacterView(
+                        status: session.status,
+                        phase: session.phase,
+                        phaseStartedAt: session.phaseStartedAt,
+                        elapsedSecondsInPhase: session.elapsedSecondsInPhase,
+                        phaseDuration: session.phaseDuration,
+                        size: 82
+                    )
+                    .frame(width: 82, height: 82)
+
+                    ProgressView(value: session.progress)
+                        .progressViewStyle(.circular)
+                        .tint(PipTheme.mint)
+                        .frame(width: 58, height: 58)
+                        .overlay {
+                            Text("\(session.remainingSeconds)s")
+                                .font(.caption2.monospacedDigit())
+                        }
+                        .accessibilityLabel("Session progress")
+                        .accessibilityValue("\(session.remainingSeconds) seconds remaining")
+                }
 
                 Text(statusTitle)
-                    .font(.caption)
+                    .font(.caption2)
                     .multilineTextAlignment(.center)
-
-                Button(action: primaryAction) {
-                    Label(primaryActionTitle, systemImage: primaryActionIcon)
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .accessibilityLabel(primaryActionTitle)
+                    .lineLimit(1)
+                    .frame(maxWidth: .infinity, minHeight: 18)
 
                 if session.status == .running || session.status == .paused {
-                    Button("Cancel", role: .destructive) {
-                        session.cancel()
+                    HStack(spacing: 6) {
+                        primaryActionButton
+                        cancelButton
                     }
-                    .accessibilityLabel("Cancel session")
+                } else {
+                    primaryActionButton
                 }
             }
-            .padding()
+            .padding(.horizontal, 8)
+            .padding(.vertical, 6)
         }
         .tint(PipTheme.mint)
         .task {
@@ -67,7 +73,7 @@ struct PipWatchRootView: View {
 
     private var statusTitle: String {
         switch session.status {
-        case .idle: return "Ready for an independent 48-second session"
+        case .idle: return "Ready"
         case .running: return phaseTitle
         case .paused: return "Paused"
         case .done: return "Session complete"
@@ -105,6 +111,43 @@ struct PipWatchRootView: View {
         case .running: session.pause()
         case .paused: session.resume()
         }
+    }
+
+    private var primaryActionButton: some View {
+        Button(action: primaryAction) {
+            actionLabel(title: primaryActionTitle, systemImage: primaryActionIcon)
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.small)
+        .frame(maxWidth: .infinity, minHeight: 34, maxHeight: 34)
+        .accessibilityLabel(primaryActionTitle)
+    }
+
+    private var cancelButton: some View {
+        Button {
+            session.cancel()
+        } label: {
+            actionLabel(title: "Cancel", systemImage: "xmark")
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.bordered)
+        .tint(.red)
+        .controlSize(.small)
+        .frame(maxWidth: .infinity, minHeight: 34, maxHeight: 34)
+        .accessibilityLabel("Cancel session")
+    }
+
+    private func actionLabel(title: String, systemImage: String) -> some View {
+        HStack(spacing: 3) {
+            Image(systemName: systemImage)
+            Text(title)
+                .lineLimit(1)
+                .minimumScaleFactor(0.72)
+                .allowsTightening(true)
+        }
+        .font(.caption.weight(.semibold))
+        .lineLimit(1)
     }
 }
 

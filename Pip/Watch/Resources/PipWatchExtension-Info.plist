@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>Pip</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleName</key>
@@ -13,23 +15,26 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>WKAppBundleIdentifier</key>
-	<string>com.pip.app.watchkitapp</string>
+	<string>com.rainanlin.pip.watchkitapp</string>
 	<key>CLKComplicationDataSourceClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).PipComplicationDataSource</string>
 	<key>CLKComplicationSupportedFamilies</key>
 	<array>
-		<integer>4</integer>
-		<integer>10</integer>
-		<integer>11</integer>
+		<string>CLKComplicationFamilyCircularSmall</string>
+		<string>CLKComplicationFamilyGraphicCircular</string>
+		<string>CLKComplicationFamilyGraphicRectangular</string>
 	</array>
 	<key>NSExtension</key>
 	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>WKAppBundleIdentifier</key>
+			<string>com.rainanlin.pip.watchkitapp</string>
+		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
-		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).PipWatchExtension</string>
 	</dict>
 </dict>
 </plist>

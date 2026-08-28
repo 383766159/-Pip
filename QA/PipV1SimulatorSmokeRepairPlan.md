@@ -2,7 +2,7 @@
 
 **Goal:** Independently verify that the repaired iPhone 17 Simulator cold-start home screen exposes the header and Start control, that the first-start explanation and live session countdown work, and that the existing automated/platform checks remain green.
 
-**Architecture:** QA builds the Debug iOS app from the current workspace, removes the installed `com.pip.app`, installs the fresh simulator product, and captures evidence at cold start, first-start explanation, active session, and completion. UI observations are kept separate from the notification-permission state; the latter is recorded as a simulator-state observation unless a clean launch reproduces it.
+**Architecture:** QA builds the Debug iOS app from the current workspace, removes the installed `com.rainanlin.pip`, installs the fresh simulator product, and captures evidence at cold start, first-start explanation, active session, and completion. UI observations are kept separate from the notification-permission state; the latter is recorded as a simulator-state observation unless a clean launch reproduces it.
 
 **Tech Stack:** Xcode 26.6, iOS 26.5 iPhone 17 Simulator, `xcodebuild`, `xcrun simctl`, XCTest, WidgetKit, `plutil`, `rg`.
 
@@ -11,7 +11,7 @@
 ## Baseline and scope
 
 - Device: iPhone 17 Simulator, UDID `8DDD783C-51C9-490A-A6C7-F7466067E382`.
-- Bundle: `com.pip.app`.
+- Bundle: `com.rainanlin.pip`.
 - Existing failure evidence: `/tmp/Pip-iPhone17-fresh-before-start.png` shows the light home surface vertically cropped; the header is absent and only the top of Start is visible.
 - Existing notification evidence: `/tmp/Pip-iPhone17-home.png` shows the system notification prompt. The prompt disappeared after simulator shutdown/boot, so it must be recorded as simulator state and not treated as a home-layout failure.
 - Product code is read-only for this QA node. Only QA evidence documents may be updated.
@@ -42,7 +42,7 @@
      build CODE_SIGNING_ALLOWED=NO
    ```
 
-3. Shut down and boot the iPhone 17 Simulator, wait for boot completion, uninstall `com.pip.app`, install `.../Build/Products/Debug-iphonesimulator/Pip.app`, launch it, and capture `/tmp/Pip-iPhone17-simulator-smoke-cold.png`.
+3. Shut down and boot the iPhone 17 Simulator, wait for boot completion, uninstall `com.rainanlin.pip`, install `.../Build/Products/Debug-iphonesimulator/Pip.app`, launch it, and capture `/tmp/Pip-iPhone17-simulator-smoke-cold.png`.
 4. Inspect the cold-start screenshot against SMR-01/02/06. Record the notification prompt state independently.
 5. Exercise Start and the first-start explanation. Capture `/tmp/Pip-iPhone17-simulator-smoke-explanation.png` and `/tmp/Pip-iPhone17-simulator-smoke-session-0s.png`.
 6. Wait at least 3 seconds, capture `/tmp/Pip-iPhone17-simulator-smoke-session-3s.png`, and compare the remaining-seconds text and Pip stage with the 0-second capture. Continue through the 48-second completion boundary and capture `/tmp/Pip-iPhone17-simulator-smoke-done.png`.

@@ -22,6 +22,8 @@ Your information stays on your device. Pip has no account, cloud sync, analytics
 
 Pip is not a medical device and does not provide medical advice, diagnosis, or treatment. Stop if you have pain or concerns and consult a qualified healthcare professional.
 
+Terms of Use (Apple Standard EULA): https://www.apple.com/legal/internet-services/itunes/appstore/dev/stdeula/
+
 ## Keywords
 
 kegel,pelvic floor,reminder,habit,wellness,routine
@@ -29,3 +31,7 @@ kegel,pelvic floor,reminder,habit,wellness,routine
 ## Review Notes
 
 Pip schedules local notifications only after the user grants notification permission. The app does not use accounts, network services, cloud sync, HealthKit, StoreKit, in-app purchases, advertising, or ActivityKit.
+
+To test the core flow, tap Start, dismiss the first-use explanation, and follow the lift-and-release session. Pause, Resume, and Cancel are available during an active session. No login or purchase is required.
+
+Pip is a general wellness reminder, not a medical device, and does not provide medical advice, diagnosis, or treatment. The app includes easy-to-find links to independent educational sources in Settings > Privacy > Educational sources.

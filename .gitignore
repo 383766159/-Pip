@@ -40,6 +40,9 @@ build/Release
 # Xcode build products and macOS metadata
 build/
 .DS_Store
+**/xcuserdata/
+*.xcuserstate
+**/DerivedData/
 
 # Dependency directories
 node_modules/

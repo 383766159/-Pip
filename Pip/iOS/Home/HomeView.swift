@@ -134,21 +134,6 @@ public struct HomeView: View {
                 .frame(width: ringSize + 28, height: ringSize + 28)
                 .blur(radius: 18)
 
-            if viewModel.state == .session {
-                TimelineView(
-                    .animation(
-                        minimumInterval: reduceMotion ? 1 : 1.0 / 120.0,
-                        paused: reduceMotion || viewModel.isPaused
-                    )
-                ) { context in
-                    PipSessionRing(
-                        progress: ringProgress(at: context.date),
-                        isLift: viewModel.stage == .lift
-                    )
-                    .frame(width: ringSize, height: ringSize)
-                }
-            }
-
             PipCharacterView(
                 stage: viewModel.stage,
                 homeState: viewModel.state,
@@ -157,7 +142,11 @@ public struct HomeView: View {
                 phaseStartedAt: viewModel.phaseStartedAt,
                 phaseDuration: viewModel.phaseDuration,
                 elapsedSecondsInPhase: viewModel.elapsedSecondsInPhase,
-                size: size
+                remainingSeconds: viewModel.remainingSeconds,
+                totalSessionSeconds: viewModel.totalSessionSeconds,
+                sessionEntryPose: viewModel.sessionEntryPose,
+                size: size,
+                ringSize: ringSize
             )
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(viewModel.voiceOverLabel)
@@ -178,11 +167,6 @@ public struct HomeView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-
-    private func ringProgress(at date: Date) -> Double {
-        let total = Double(max(viewModel.totalSessionSeconds, 1))
-        return 1 - (viewModel.visualRemainingSeconds(at: date) / total)
     }
 
     private var statusBlock: some View {
@@ -295,12 +279,18 @@ private struct StartExplanationSheet: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 18) {
-                PipMascotCanvas(pose: .rest, size: 120)
+                PipMobiusSceneView(pose: .rest, size: 120)
+                    .frame(width: 120, height: 120)
 
                 Text("A short Pip session")
                     .font(.title2.weight(.semibold))
 
                 Text("Follow Pip's gentle lift and release rhythm for 48 seconds. You can pause or cancel at any time.")
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+
+                Text("Pip is for general wellness, not medical advice or treatment. Stop if you feel pain or discomfort.")
+                    .font(.footnote)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
 

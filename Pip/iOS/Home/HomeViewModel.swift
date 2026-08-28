@@ -26,6 +26,7 @@ public final class HomeViewModel: ObservableObject {
     @Published public private(set) var accessibilityAnnouncement = ""
     @Published public private(set) var snapshotWriteErrorMessage: String?
     @Published public private(set) var phaseStartedAt: Date
+    @Published private(set) var sessionEntryPose: PipMobiusPose?
 
     public private(set) var engine: SessionEngine
     public private(set) var hapticEvents: [HomeHaptic] = []
@@ -182,9 +183,18 @@ public final class HomeViewModel: ObservableObject {
             return
         }
 
+        let sessionStartDate = now()
+        let entryTime = max(0, sessionStartDate.timeIntervalSince(phaseStartedAt))
+        sessionEntryPose = PipMobiusMotion.pose(
+            stage: stage,
+            homeState: state,
+            progress: 0,
+            time: entryTime,
+            reduceMotion: false
+        )
         stopClock()
         engine = SessionEngine()
-        sessionStartedAt = now()
+        sessionStartedAt = sessionStartDate
         hapticEvents.removeAll()
         snapshotWriteErrorMessage = nil
         didRecordCompletion = false
@@ -192,7 +202,7 @@ public final class HomeViewModel: ObservableObject {
         isPaused = false
 
         let events = engine.start()
-        phaseStartedAt = now()
+        phaseStartedAt = sessionStartDate
         syncPresentationFromEngine()
         handle(events)
         startClock()
@@ -240,6 +250,7 @@ public final class HomeViewModel: ObservableObject {
         elapsedSecondsInPhase = 0
         remainingSeconds = totalSessionSeconds
         sessionStartedAt = nil
+        sessionEntryPose = nil
         phaseStartedAt = now()
         accessibilityAnnouncement = "Session cancelled. Ready to start."
     }
@@ -254,8 +265,8 @@ public final class HomeViewModel: ObservableObject {
         }
 
         let events = engine.advance(by: seconds)
-        handle(events)
         syncPresentationFromEngine()
+        handle(events)
     }
 
     public func startClock() {
@@ -311,6 +322,10 @@ public final class HomeViewModel: ObservableObject {
 
         if stage != previousStage {
             phaseStartedAt = now()
+        }
+
+        if previousStage == .lift, stage != .lift {
+            sessionEntryPose = nil
         }
 
         if state == .session, stage != previousStage {

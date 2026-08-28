@@ -19,7 +19,7 @@ public final class PipComplicationDataSource: NSObject, CLKComplicationDataSourc
     }
 
     public func getNextRequestedUpdateDate(
-        withHandler handler: @escaping (Date?) -> Void
+        handler: @escaping (Date?) -> Void
     ) {
         handler(Date().addingTimeInterval(15 * 60))
     }

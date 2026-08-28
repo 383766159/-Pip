@@ -4,8 +4,22 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>Pip</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon</string>
+			</array>
+			<key>CFBundleIconName</key>
+			<string>AppIcon</string>
+		</dict>
+	</dict>
 	<key>CFBundleName</key>
 	<string>Pip</string>
 	<key>CFBundlePackageType</key>
@@ -13,10 +27,10 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.pip.app</string>
+	<string>com.rainanlin.pip</string>
 </dict>
 </plist>

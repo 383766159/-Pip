@@ -7,7 +7,7 @@ public enum PipSnapshotStoreError: Error, Equatable {
 }
 
 public final class PipSnapshotStore {
-    public static let appGroupIdentifier = "group.com.pip.app"
+    public static let appGroupIdentifier = "group.com.rainanlin.pip"
     public static let fileName = "PipSnapshot.json"
 
     public let fileURL: URL?

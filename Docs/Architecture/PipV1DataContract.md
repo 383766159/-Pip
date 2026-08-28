@@ -132,7 +132,7 @@ streak 按相邻 Gregorian 设备日期键判断，不按 24 小时秒数、提�
 
 ### 4.1 用途、路径与所有权
 
-App Group 标识固定为 `group.com.pip.app`，正式文件名固定为 `PipSnapshot.json`。快照是给 Widget 和 Watch 的只读投影，不是第二数据库，也不是跨设备同步格式。
+App Group 标识固定为 `group.com.rainanlin.pip`，正式文件名固定为 `PipSnapshot.json`。快照是给 Widget 和 Watch 的只读投影，不是第二数据库，也不是跨设备同步格式。
 
 - iPhone App 是唯一快照写入者；只有 iPhone 的业务协调层可以调用快照写入流程。
 - Widget 和 Watch 只能调用读取流程，不得调用写入、替换、删除或修复流程；即使共享源码中存在 `PipSnapshotStore.write`，target 级代码也不得从 Widget/Watch 调用它。
@@ -207,11 +207,11 @@ Widget/Watch 读取方遇到文件不存在、App Group 不可读、JSON 损坏�
 
 | Target | 允许能力 | 禁止能力 |
 | --- | --- | --- |
-| iPhone App | 本地 SwiftData `ModelContainer`/`ModelContext` 读写；`group.com.pip.app` 读写 `PipSnapshot.json`；本地通知权限与 `UNCalendarNotificationTrigger`；本地触觉。 | 网络、REST/API、HTTP、WebSocket、APNs、CloudKit/iCloud、`WatchConnectivity`、HealthKit、账户/认证、StoreKit/IAP、广告、聊天 SDK、Live Activity/ActivityKit。 |
-| Watch App/Extension | `group.com.pip.app` 只读；读取快照用于界面和 complication；独立内存会话、Watch 触觉和本地界面。 | 创建 SwiftData 容器；写共享快照；写 iPhone SwiftData、日历、streak 或通知配置；跨设备同步；网络、账户、CloudKit/iCloud、`WatchConnectivity`、HealthKit、IAP、广告、聊天 SDK、Live Activity/ActivityKit。 |
-| Widget Extension | `group.com.pip.app` 只读；WidgetKit small Widget 时间线；读取静态 Pip 状态、今日次数和下一提醒。 | 创建 SwiftData 容器；写任何业务数据或快照；启动会话；请求通知权限；网络、APNs、CloudKit/iCloud、HealthKit、StoreKit/IAP、Live Activity/ActivityKit、广告或聊天 SDK；锁屏 Widget。 |
+| iPhone App | 本地 SwiftData `ModelContainer`/`ModelContext` 读写；`group.com.rainanlin.pip` 读写 `PipSnapshot.json`；本地通知权限与 `UNCalendarNotificationTrigger`；本地触觉。 | 网络、REST/API、HTTP、WebSocket、APNs、CloudKit/iCloud、`WatchConnectivity`、HealthKit、账户/认证、StoreKit/IAP、广告、聊天 SDK、Live Activity/ActivityKit。 |
+| Watch App/Extension | `group.com.rainanlin.pip` 只读；读取快照用于界面和 complication；独立内存会话、Watch 触觉和本地界面。 | 创建 SwiftData 容器；写共享快照；写 iPhone SwiftData、日历、streak 或通知配置；跨设备同步；网络、账户、CloudKit/iCloud、`WatchConnectivity`、HealthKit、IAP、广告、聊天 SDK、Live Activity/ActivityKit。 |
+| Widget Extension | `group.com.rainanlin.pip` 只读；WidgetKit small Widget 时间线；读取静态 Pip 状态、今日次数和下一提醒。 | 创建 SwiftData 容器；写任何业务数据或快照；启动会话；请求通知权限；网络、APNs、CloudKit/iCloud、HealthKit、StoreKit/IAP、Live Activity/ActivityKit、广告或聊天 SDK；锁屏 Widget。 |
 
-除 `group.com.pip.app` 外，v1 不新增共享容器或业务 entitlement。Provisioning 配置必须在需要读取的 target 间保持一致，但 target 的 capability 不得把 Watch/Widget 变成写入者。
+除 `group.com.rainanlin.pip` 外，v1 不新增共享容器或业务 entitlement。Provisioning 配置必须在需要读取的 target 间保持一致，但 target 的 capability 不得把 Watch/Widget 变成写入者。
 
 ## 7. 验收不变量
 

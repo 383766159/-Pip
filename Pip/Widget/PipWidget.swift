@@ -7,7 +7,7 @@ struct PipWidgetEntryView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 8) {
-                Image(widgetAssetName)
+                Image("PipSoftKnotBody")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 42, height: 42)
@@ -50,19 +50,6 @@ struct PipWidgetEntryView: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel(accessibilityLabel)
-    }
-
-    private var widgetAssetName: String {
-        switch entry.surface {
-        case let .valid(snapshot):
-            switch snapshot.pipStaticState {
-            case .idle: return "idle"
-            case .waiting: return "waiting"
-            case .done: return "done"
-            }
-        case .empty:
-            return "waiting"
-        }
     }
 
     private var accessibilityLabel: String {

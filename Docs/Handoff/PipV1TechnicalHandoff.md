@@ -79,13 +79,13 @@ Pip 是一个轻量的每日习惯工具，使用 48 秒的 `lift → release` �
 
 | Target | Bundle ID | 最低系统 | 责任 | 写入权限 |
 | --- | --- | --- | --- | --- |
-| `Pip` | `com.pip.app` | iOS 17.0 | iPhone 主 App、SwiftData、会话、提醒、统计、快照写入 | 写 SwiftData；写 App Group snapshot；请求通知权限 |
-| `PipWatch` | `com.pip.app.watchkitapp` | watchOS 10.0 | Watch 容器 | 不写 iPhone 数据 |
-| `PipWatchExtension` | `com.pip.app.watchkitapp.extension` | watchOS 10.0 | Watch UI、独立会话、complications | 只读 App Group snapshot |
-| `PipWidgetExtension` | `com.pip.app.widget` | iOS 17.0 | small Widget、时间线 | 只读 App Group snapshot |
-| `PipTests` | `com.pip.app.tests` | iOS 17.0 | iOS/共享代码的 XCTest | 测试可注入临时 URL 和内存 SwiftData |
+| `Pip` | `com.rainanlin.pip` | iOS 17.0 | iPhone 主 App、SwiftData、会话、提醒、统计、快照写入 | 写 SwiftData；写 App Group snapshot；请求通知权限 |
+| `PipWatch` | `com.rainanlin.pip.watchkitapp` | watchOS 10.0 | Watch 容器 | 不写 iPhone 数据 |
+| `PipWatchExtension` | `com.rainanlin.pip.watchkitapp.extension` | watchOS 10.0 | Watch UI、独立会话、complications | 只读 App Group snapshot |
+| `PipWidgetExtension` | `com.rainanlin.pip.widget` | iOS 17.0 | small Widget、时间线 | 只读 App Group snapshot |
+| `PipTests` | `com.rainanlin.pip.tests` | iOS 17.0 | iOS/共享代码的 XCTest | 测试可注入临时 URL 和内存 SwiftData |
 
-所有正式 target 使用同一个 App Group：`group.com.pip.app`。对应 entitlement 文件是：
+所有正式 target 使用同一个 App Group：`group.com.rainanlin.pip`。对应 entitlement 文件是：
 
 - `Pip/Resources/Pip.entitlements`
 - `Pip/Widget/Resources/PipWidget.entitlements`
@@ -650,7 +650,7 @@ Watch 不写回 iPhone 统计是当前 v1 契约，不要在没有产品决策�
 - 会话完成必须经过 `SessionEngine` 的 48 秒不变量；不能从按钮直接增加今日次数。
 - 统计必须从有效 completed `SessionRecord` 重建；不能从 snapshot、提醒次数或 Watch 读数累加。
 - SwiftData 只由 iPhone App 的 `LocalStore` 持有；Widget/Watch 不能创建业务 ModelContainer。
-- App Group 只使用 `group.com.pip.app/PipSnapshot.json`；不可回退到私有 Application Support 伪装成共享状态。
+- App Group 只使用 `group.com.rainanlin.pip/PipSnapshot.json`；不可回退到私有 Application Support 伪装成共享状态。
 - Widget/Watch 只读 snapshot；遇到未知 schema、损坏、过期或 stale day 必须安全降级。
 - 用户可见文案保持英文、Kegels/pelvic floor 词汇和非医疗定位；不要引入禁用词或疗效声称。
 - 保持 `Pip/Resources/Info.plist` 的 portrait/full-screen/launch screen 配置和 `PipTheme.ink(for:)` 的深色对比度。

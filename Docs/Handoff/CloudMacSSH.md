@@ -101,7 +101,7 @@ mstsc 不能直接连 macOS。
 
 | 文件 | 作用 |
 | --- | --- |
-| `scripts/sim-run.sh` | `git pull --ff-only` → 启动 Simulator → Debug 编译 → 安装 `com.pip.app` → launch |
+| `scripts/sim-run.sh` | `git pull --ff-only` → 启动 Simulator → Debug 编译 → 安装 `com.rainanlin.pip` → launch |
 | `scripts/sim-test.sh` | pull 后跑 `Pip` scheme 的 XCTest |
 | `scripts/sim-shot.sh` | 截当前 Simulator |
 | `scripts/ssh-sim.ps1` | 本机一条命令 SSH 过去执行上面三个动作 |
@@ -118,7 +118,7 @@ mstsc 不能直接连 macOS。
 | `Permission denied (publickey)` 拉 GitHub | Mac 的 SSH key 加入 GitHub |
 | `working tree is dirty` | 不要在云 Mac 上改代码；`git status` 后 reset/stash |
 | `non-fast-forward` | 云 Mac 不要独立提交；只 pull |
-| 编译过、画面还是旧的 | 脚本会 `simctl install` 当前产物；仍旧则 `xcrun simctl uninstall booted com.pip.app` 再跑 |
+| 编译过、画面还是旧的 | 脚本会 `simctl install` 当前产物；仍旧则 `xcrun simctl uninstall booted com.rainanlin.pip` 再跑 |
 | Watch 构建失败 | 与这套 iPhone 模拟器流程无关；Watch 需要对应 SDK |
 
 ## 6. 建议的分工

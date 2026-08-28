@@ -2,7 +2,7 @@
 
 ## Subtitle
 
-Gentle 48-second daily practice
+Gentle Kegel reminders
 
 ## Promotional text
 
@@ -10,7 +10,7 @@ Build a small, private habit with a calm lift-and-release rhythm, local reminder
 
 ## Description
 
-Pip turns one short 48-second session into a clear, repeatable daily ritual.
+Pip turns one short 48-second Kegel session into a clear, repeatable daily ritual.
 
 - Follow eight guided lift-and-release cycles.
 - Pause, resume, or cancel whenever you need to.
@@ -21,6 +21,10 @@ Pip turns one short 48-second session into a clear, repeatable daily ritual.
 
 Pip has no account, network service, cloud sync, advertising, HealthKit access, chat, or in-app purchases.
 
+Pip is a general wellness reminder, not a medical device, and does not provide medical advice, diagnosis, or treatment. Stop if you have pain or concerns and consult a qualified healthcare professional. General educational sources are available in Settings > Privacy > Educational sources.
+
+Terms of Use (Apple Standard EULA): https://www.apple.com/legal/internet-services/itunes/appstore/dev/stdeula/
+
 ## Keywords
 
-habit, routine, reminder, streak, breathing, wellness, accessibility
+kegel, pelvic floor, habit, routine, reminder, streak, wellness, accessibility

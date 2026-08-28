@@ -16,6 +16,7 @@ public final class WatchSessionModel: ObservableObject {
     @Published public private(set) var remainingSeconds = SessionConfiguration().totalDuration
     @Published public private(set) var elapsedSecondsInPhase = 0
     @Published public private(set) var currentRepetition = 0
+    @Published public private(set) var phaseStartedAt = Date()
 
     public private(set) var engine = SessionEngine()
 
@@ -30,11 +31,23 @@ public final class WatchSessionModel: ObservableObject {
         min(1, max(0, Double(engine.activeSeconds) / Double(engine.configuration.totalDuration)))
     }
 
+    public var phaseDuration: Int {
+        switch phase {
+        case .lift:
+            return engine.configuration.liftDuration
+        case .release:
+            return engine.configuration.releaseDuration
+        case .idle, .paused, .completed, .cancelled:
+            return 1
+        }
+    }
+
     public func start() {
         guard status == .idle || status == .done else { return }
         stopClock()
         engine = SessionEngine()
         status = .running
+        phaseStartedAt = Date()
         handle(engine.start())
         sync()
         startClock()
@@ -51,6 +64,7 @@ public final class WatchSessionModel: ObservableObject {
         guard status == .paused else { return }
         _ = engine.resume()
         status = .running
+        phaseStartedAt = Date()
         sync()
     }
 
@@ -65,8 +79,12 @@ public final class WatchSessionModel: ObservableObject {
 
     public func advance(by seconds: Int) {
         guard status == .running, seconds > 0 else { return }
+        let previousPhase = phase
         handle(engine.advance(by: seconds))
         sync()
+        if phaseBoundaryChanged(from: previousPhase, to: phase) {
+            phaseStartedAt = Date()
+        }
     }
 
     public func startClock() {
@@ -119,6 +137,15 @@ public final class WatchSessionModel: ObservableObject {
             WKInterfaceDevice.current().play(.click)
         case .success:
             WKInterfaceDevice.current().play(.success)
+        }
+    }
+
+    private func phaseBoundaryChanged(from oldPhase: SessionPhase, to newPhase: SessionPhase) -> Bool {
+        switch (oldPhase, newPhase) {
+        case (.lift, .release), (.release, .lift):
+            return true
+        default:
+            return false
         }
     }
 }

@@ -25,9 +25,9 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   xcrun simctl install 8DDD783C-51C9-490A-A6C7-F7466067E382 \
   /tmp/Pip-final-ui-tests/Build/Products/Debug-iphonesimulator/Pip.app
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
-  xcrun simctl terminate 8DDD783C-51C9-490A-A6C7-F7466067E382 com.pip.app
+  xcrun simctl terminate 8DDD783C-51C9-490A-A6C7-F7466067E382 com.rainanlin.pip
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
-  xcrun simctl launch 8DDD783C-51C9-490A-A6C7-F7466067E382 com.pip.app
+  xcrun simctl launch 8DDD783C-51C9-490A-A6C7-F7466067E382 com.rainanlin.pip
 sleep 5
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   xcrun simctl io 8DDD783C-51C9-490A-A6C7-F7466067E382 screenshot \
@@ -46,9 +46,9 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
 
 ```bash
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
-  xcrun simctl terminate 8DDD783C-51C9-490A-A6C7-F7466067E382 com.pip.app
+  xcrun simctl terminate 8DDD783C-51C9-490A-A6C7-F7466067E382 com.rainanlin.pip
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
-  xcrun simctl launch 8DDD783C-51C9-490A-A6C7-F7466067E382 com.pip.app
+  xcrun simctl launch 8DDD783C-51C9-490A-A6C7-F7466067E382 com.rainanlin.pip
 sleep 5
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   xcrun simctl io 8DDD783C-51C9-490A-A6C7-F7466067E382 screenshot /tmp/Pip-iPhone17-qa-launch-after5s.png
@@ -65,9 +65,9 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   xcrun simctl install 8DDD783C-51C9-490A-A6C7-F7466067E382 \
   /tmp/Pip-qa-ui-integrity-tests/Build/Products/Debug-iphonesimulator/Pip.app
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
-  xcrun simctl terminate 8DDD783C-51C9-490A-A6C7-F7466067E382 com.pip.app
+  xcrun simctl terminate 8DDD783C-51C9-490A-A6C7-F7466067E382 com.rainanlin.pip
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
-  xcrun simctl launch 8DDD783C-51C9-490A-A6C7-F7466067E382 com.pip.app
+  xcrun simctl launch 8DDD783C-51C9-490A-A6C7-F7466067E382 com.rainanlin.pip
 sleep 5
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   xcrun simctl io 8DDD783C-51C9-490A-A6C7-F7466067E382 screenshot \

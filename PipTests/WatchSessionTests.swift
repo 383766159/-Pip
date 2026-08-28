@@ -2,6 +2,17 @@ import XCTest
 @testable import Pip
 
 final class WatchSessionTests: XCTestCase {
+    func testWatchCancelStopsEngineWithoutCompleting() {
+        var engine = SessionEngine()
+        _ = engine.start()
+        _ = engine.advance(by: 5)
+        _ = engine.cancel()
+
+        XCTAssertEqual(engine.phase, .cancelled)
+        XCTAssertFalse(engine.isCompleted)
+        XCTAssertEqual(engine.activeSeconds, 5)
+    }
+
     func testWatchSessionUsesIndependent48SecondEngine() {
         var engine = SessionEngine()
         _ = engine.start()

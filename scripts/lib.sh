@@ -112,6 +112,6 @@ pip_install_and_launch() {
     exit 1
   fi
   xcrun simctl install "$udid" "$app"
-  xcrun simctl launch "$udid" com.pip.app
-  echo "Launched com.pip.app on $udid"
+  xcrun simctl launch "$udid" com.rainanlin.pip
+  echo "Launched com.rainanlin.pip on $udid"
 }

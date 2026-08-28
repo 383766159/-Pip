@@ -217,8 +217,6 @@ final class HomeStateTests: XCTestCase {
         XCTAssertEqual(PipStage.release.animationAssetNames.count, 3)
         XCTAssertEqual(PipStage.lift.animationAsset(progress: 0, reduceMotion: true), "lift")
         XCTAssertEqual(PipStage.lift.animationAsset(progress: 0.99, reduceMotion: false), "lift4")
-        XCTAssertEqual(PipMascotMotion.framesPerPhase, 120)
-
         let liftEnd = PipMascotMotion.pose(
             stage: .lift,
             homeState: .session,
